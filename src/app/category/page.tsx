@@ -19,33 +19,33 @@ export default function Category() {
 
   return (
     <>
-      <section id="categoryHero" className="relative h-screen w-full bg-center flex items-center mb-20 bg-[url('/imgs/carousel-1.jpg')] bg-cover bg-no-repeat">
+      <section id="categoryHero" className="relative h-screen w-full bg-center flex items-center lg:mb-20 sm:mb-[60px] mb-10 bg-[url('/imgs/carousel-1.jpg')] bg-cover bg-no-repeat">
         <Hero isHomepage={false} title="Tri Hita Karana" subTitle="bracelets" />
       </section>
       <section className="px-10 mb-20">
         <Carousel title="New Arrivals" isProduct productCardCls="bg-bs-fourth bg-opacity-[2%] p-2" />
       </section>
       <Description isBgPrimary title="Cultivate Harmony Within & Around You" desc={`Inspired by the ancient Balinese philosophy \"Tri Hita Karana\" (meaning \"three causes of well-being\" or \"three paths to prosperity\"), the Tri Hita Karana bracelet emphasizes harmonious balance among three fundamental elements.`}>
-        <div className="flex justify-center items-center flex-3 gap-x-8">
+        <div className="lg:flex grid justify-center items-center flex-3 lg:gap-x-8 gap-y-7">
           {triHitaKarana.map((concept, index) => (
             <>
               <div key={index} className="text-center">
-                <span className={`${crimsonText.className} block !font-bold text-lg`}>{concept.name}</span>
-                <span className="block font-light text-sm">{concept.desc}</span>
+                <span className={`${crimsonText.className} block !font-bold md:text-lg sm:text-base text-sm md:mb-2 sm:mb-1.5 mb-1`}>{concept.name}</span>
+                <span className="block font-light md:text-sm sm:test-xs text-[10px]">{concept.desc}</span>
               </div>
               {index < 2 && (
-                <span className="h-10 border"></span>
+                <span className="hidden lg:block h-10 border"></span>
               )}
             </>
           ))}
         </div>
       </Description>
-      <section className="py-20">
-        <div className="flex items-center">
-          <Image src="/imgs/tri-hita-karana-collections.jpg" alt="Tri Hita Karana Bracelet Collections" width={630} height={450} />
-          <div className="ml-10">
-            <h2 className={`${crimsonText.className} text-4xl mb-4 !font-bold`}>Harmony in Every Bead</h2>
-            <p>The Tri Hita Karana bracelet typically incorporates symbols or designs representing the three elements of harmony between divinity, humanity, and nature. This serves as a constant reminder of the philosophy's core message. It's often worn not just as a fashion accessory but also as a spiritual and cultural symbol.</p>
+      <section className="md:py-20 py-10 md:px-0 px-5">
+        <div className="md:flex items-center">
+          <Image src="/imgs/tri-hita-karana-collections.jpg" alt="Tri Hita Karana Bracelet Collections" width={630} height={450} className="md:w-[630px] w-[376px] md:h-[450px] h-[276px]" />
+          <div className="md:ml-10">
+            <h2 className={`${crimsonText.className} md:text-4xl sm:text-[34px] text-[32px] md:mb-4 sm:mb-3 mb-2 !font-bold`}>Harmony in Every Bead</h2>
+            <p className="text-justify md:text-base sm:text-sm text-xs">The Tri Hita Karana bracelet typically incorporates symbols or designs representing the three elements of harmony between divinity, humanity, and nature. This serves as a constant reminder of the philosophy's core message. It's often worn not just as a fashion accessory but also as a spiritual and cultural symbol.</p>
           </div>
         </div>
       </section>

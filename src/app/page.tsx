@@ -19,28 +19,28 @@ export default function Home() {
 
   return (
     <>
-      <section id="homepageHero" className="relative h-screen w-full bg-center flex items-center mb-20 bg-[url('/imgs/hero.jpg')] bg-cover bg-no-repeat">
+      <section id="homepageHero" className="relative h-screen w-full bg-center flex items-center md:mb-20 sm:mb-[60px] mb-10 bg-[url('/imgs/hero.jpg')] bg-cover bg-no-repeat">
         <Hero isHomepage title="Discover Vibrant Jewelry for Every Soul" desc="Immerse yourself in the rich cultural heritage and spiritual essence of Bali with our authentic jewelry. Shop now and bring a piece of Bali home!" />
       </section >
-      <section className="bg-bs-primary p-20 flex">
+      <section className="bg-bs-primary sm:p-20 p-10 lg:flex">
         <div className="flex-1">
-          <Image src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" width={368} height={176} />
+          <Image src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" width={368} height={176} className="xl:w-[368px] md:w-[318px] w-[245px] xl:h-[176px] md:h-[152px] h-[117px] lg:m-0 mx-auto lg:mb-0 mb-6" />
         </div>
         <div className="flex-1 flex items-center">
-          <p className="text-sm leading-6 text-white text-justify">Founded in 2021, Infinity Pretty Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the "goodness of Bali" through our vibrant and spiritually inspired designs.</p>
+          <p className="md:text-sm sm:text-xs text-[10px] lg:leading-6 sm:leading-5 leading-4 text-white text-justify">Founded in 2021, Infinity Pretty Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the "goodness of Bali" through our vibrant and spiritually inspired designs.</p>
         </div>
       </section>
-      <section className="px-10 py-[100px]">
-        <Carousel title="Popular Category" isCategory />
+      <section className="md:px-10 px-5 py-[100px]">
+        <Carousel title="Popular This Week" isCategory />
       </section>
       <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
-      <section className="px-10 py-20 flex items-center">
-        <div className="flex-1">
-          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" width={550} height={618} className="w-[550px] h-[618px]" />
+      <section className="md:px-10 px-5 md:py-20 py-10 md:flex items-center">
+        <div className="flex-1 md:mb-0 mb-5">
+          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" width={550} height={618} className="md:w-[550px] w-[376px] md:h-[618px] h-[422px]" />
         </div>
-        <div className="ml-10 flex-1">
-          <h2 className={`${crimsonText.className} text-4xl mb-4 !font-bold`}>Introduce About Our Design</h2>
-          <p>
+        <div className="md:ml-10 flex-1">
+          <h2 className={`${crimsonText.className} md:text-4xl sm:text-[34px] text-[32px] md:mb-4 sm:mb-3 mb-2 !font-bold`}>Introduce About Our Design</h2>
+          <p className="text-justify md:text-base sm:text-sm text-xs">
             Our jewelry transcends mere fashion and style; it's a path to achieving life's balance. Infinity Pritty Jewellery offers a vast collection featuring diverse stones and charms, each imbued with unique meanings, strengths, and values. Inspired by various Balinese cultures, our collection invites you to embark on a journey of Balinese life.
           </p>
         </div>
@@ -88,14 +88,14 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="bg-bs-primary--darker pr-10 flex">
-        <div className="flex-initial w-[45%]">
+      <section className="bg-bs-primary--darker lg:pr-10 lg:flex lg:pb-0 pb-10">
+        <div className="flex-initial lg:w-[45%]">
           <Image src="/imgs/footer-cta.jpg" alt="CTA Image" width={542} height={379} className="h-full w-full object-cover" />
         </div>
-        <div className="ml-10 py-24 flex-initial w-[55%]">
-          <div className="text-white mb-10">
-            <h2 className={`${crimsonText.className} text-4xl mb-2 !font-bold`}>Embrace Bali's Essence Today!</h2>
-            <p className="leading-6 font-light">Carry the spirit of Bali with you through our intricately crafted bracelets. Explore our collection and let the magic of Bali adorn your wrist!</p>
+        <div className="lg:ml-10 lg:py-24 lg flex-initial lg:w-[55%] md:px-10 px-5 lg:mt-0 mt-10">
+          <div className="text-white lg:mb-10 mb-5">
+            <h2 className={`${crimsonText.className} md:text-4xl sm:text-[34px] text-[32px] lg:mb-2 sm:mb-1.5 mb-1 !font-bold`}>Embrace Bali's Essence Today!</h2>
+            <p className="md:text-base sm:text-sm text-xs font-light">Carry the spirit of Bali with you through our intricately crafted bracelets. Explore our collection and let the magic of Bali adorn your wrist!</p>
           </div>
           <Button />
         </div>
