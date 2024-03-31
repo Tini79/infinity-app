@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* #homepageHero {
+  background-image: url("/imgs/hero.jpg");
+  background-color: #332C11;
+} */

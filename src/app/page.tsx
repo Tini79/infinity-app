@@ -1,113 +1,105 @@
 import Image from "next/image";
-
+import { crimsonText } from "./ui/fonts";
+import Carousel from "./ui/components/carousel";
+import Description from "./ui/components/description";
+import Link from "next/link";
+import Button from "./ui/components/button";
+import Hero from "./ui/components/hero";
 export default function Home() {
+  const categories = [
+    { name: "Tri Hita Karana Bracelets", image: "/imgs/carousel-1.jpg", href: "/category" },
+    { name: "Red String Bracelets", image: "/imgs/carousel-2.jpg", href: "/" }
+  ]
+
+  const testimonials = [
+    { custName: "Ajeng", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" },
+    { custName: "Bram", productCategory: "Red String Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-2.jpg", href: "/" },
+    { custName: "Charlotte", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" }
+  ]
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <section id="homepageHero" className="relative h-screen w-full bg-center flex items-center mb-20 bg-[url('/imgs/hero.jpg')] bg-cover bg-no-repeat">
+        <Hero isHomepage title="Discover Vibrant Jewelry for Every Soul" desc="Immerse yourself in the rich cultural heritage and spiritual essence of Bali with our authentic jewelry. Shop now and bring a piece of Bali home!" />
+      </section >
+      <section className="bg-bs-primary p-20 flex">
+        <div className="flex-1">
+          <Image src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" width={368} height={176} />
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+        <div className="flex-1 flex items-center">
+          <p className="text-sm leading-6 text-white text-justify">Founded in 2021, Infinity Pretty Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the "goodness of Bali" through our vibrant and spiritually inspired designs.</p>
+        </div>
+      </section>
+      <section className="px-10 py-[100px]">
+        <Carousel title="Popular Category" isCategory />
+      </section>
+      <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
+      <section className="px-10 py-20 flex items-center">
+        <div className="flex-1">
+          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" width={550} height={618} className="w-[550px] h-[618px]" />
+        </div>
+        <div className="ml-10 flex-1">
+          <h2 className={`${crimsonText.className} text-4xl mb-4 !font-bold`}>Introduce About Our Design</h2>
+          <p>
+            Our jewelry transcends mere fashion and style; it's a path to achieving life's balance. Infinity Pritty Jewellery offers a vast collection featuring diverse stones and charms, each imbued with unique meanings, strengths, and values. Inspired by various Balinese cultures, our collection invites you to embark on a journey of Balinese life.
           </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        </div>
+      </section>
+      {/* TODO: coba bikin setiap section yg dituju pas scroll tampil di tengah" page */}
+      <section id="productCategoriesSection" className="px-10 py-20 bg-bs-third--darker">
+        <span className={`${crimsonText.className} text-[32px] !font-bold`}>Product Categories</span>
+        <div className="flex gap-5 mt-10">
+          {categories.map((category, index) => (
+            <>
+              <div className="w-full h-[338px] relative">
+                <Link key={index} href={category.href}>
+                  <span className="absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]"></span>
+                  <Image src={category.image} alt={category.image} width={590} height={338} className="w-full h-full object-cover"></Image>
+                  <span className={`${crimsonText.className} absolute left-8 inset-y-1/2 text-white hover:text-bs-secondary !font-bold text-2xl`}>{category.name}</span>
+                </Link>
+              </div>
+            </>
+          ))}
+        </div>
+      </section >
+      <section id="testimonialsSection" className="px-10 pt-[100px] pb-[52px]">
+        <div className="mb-[52px] text-center">
+          <h2 className="mb-2 uppercase text-sm tracking-[4px]">Testimonials</h2>
+          <span className={`${crimsonText.className} text-4xl !font-bold`}>What Our Client Say</span>
+        </div>
+        <div className="flex gap-[30px]">
+          {testimonials.map((testi, index) => (
+            <>
+              <article className="px-4 pt-4 pb-6 hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
+                <section>
+                  <Image key={index} src={testi.image} alt={testi.productCategory} width={348} height={313} className="mb-2" />
+                  <div className="text-center">
+                    {/* or here? */}
+                    <span className="text-sm text-bs-third">{testi.custName}</span>
+                    <h3 className={`${crimsonText.className} mb-2 text-xl !font-bold`}>{testi.productCategory}</h3>
+                    <p className="mb-10 text-sm font-light">{testi.testi}</p>
+                    {/* TODO: stars here */}
+                    {/* TODO: aku ragu mau ubah ini ke text-sm atau biarin aja 16px ukurannya yah? coba tambahin underlinenya deh biar bisa mutusin */}
+                    <Link key={index} href={testi.href} className="text-bs-fourth text-sm font-medium hover:text-bs-third">View Product</Link>
+                  </div>
+                </section>
+              </article>
+            </>
+          ))}
+        </div>
+      </section>
+      <section className="bg-bs-primary--darker pr-10 flex">
+        <div className="flex-initial w-[45%]">
+          <Image src="/imgs/footer-cta.jpg" alt="CTA Image" width={542} height={379} className="h-full w-full object-cover" />
+        </div>
+        <div className="ml-10 py-24 flex-initial w-[55%]">
+          <div className="text-white mb-10">
+            <h2 className={`${crimsonText.className} text-4xl mb-2 !font-bold`}>Embrace Bali's Essence Today!</h2>
+            <p className="leading-6 font-light">Carry the spirit of Bali with you through our intricately crafted bracelets. Explore our collection and let the magic of Bali adorn your wrist!</p>
+          </div>
+          <Button />
+        </div>
+      </section >
+    </>
   );
 }
