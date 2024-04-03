@@ -21,6 +21,9 @@ const config: Config = {
       },
       backgroundImage: {
         "homepage-hero": "url('/public/imgs/hero.jpg')"
+      },
+      screens: {
+        "xs": "576px"
       }
     },
   },

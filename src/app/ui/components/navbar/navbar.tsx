@@ -24,44 +24,40 @@ export default function Navbar() {
   return (
     <header className="fixed w-full shadow-[0_1px_8px_2px_rgba(0,0,0,0.25)] z-10">
       <nav>
-        {/* TODO: di laptop gw py-2 bagusnya */}
-        <div className="bg-bs-primary--darker md:py-4 sm:py-3 py-2 sm:px-10 px-5 flex">
-          {/* <div className=""> */}
-          <div className="hidden lg:flex flex-1">
+        <div className="bg-bs-primary--darker lg:py-3 sm:py-2 py-1.5 lg:px-10 sm:px-[30px] px-5 flex">
+          {/* desktop, laptop, tablet */}
+          <div className="hidden xl:flex flex-1">
             {contacts.map((contact, index) => index <= 1 && (
               <NavLinks key={index} icon={contact.icon} href={contact.href} isPhone={contact.isPhone} isEmail={contact.isEmail} val={contact.value} customCls="text-sm text-bs-secondary--lighter flex me-10  hover:text-bs-secondary--darker flex items-center" />
             ))}
           </div>
-          <div className="hidden lg:flex flex-1 justify-end">
-            {/* <div className="flex"> */}
+          <div className="hidden xl:flex flex-1 justify-end">
             {contacts.map((contact, index) => index > 1 && (
               <NavLinks key={index} icon={contact.icon} href={contact.href} customCls={clsx("text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center", { "me-10": index != 3 })} />
             ))}
           </div>
-          {/* </div>
-          <div className="md:flex"> */}
-          <div className="lg:hidden flex flex-initial sm:w-1/2 w-2/3">
+          {/* mobile */}
+          <div className="xl:hidden flex flex-initial sm:w-1/2 w-2/3">
             {contacts.map((contact, index) => index < 1 && (
-              <NavLinks key={index} icon={contact.icon} href={contact.href} isPhone={contact.isPhone} isEmail={contact.isEmail} val={contact.value} customCls="sm:text-xs text-[10px] text-bs-secondary--lighter flex me-10  hover:text-bs-secondary--darker flex items-center" />
+              <NavLinks key={index} icon={contact.icon} href={contact.href} isPhone={contact.isPhone} isEmail={contact.isEmail} val={contact.value} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter flex me-10  hover:text-bs-secondary--darker flex items-center" />
             ))}
           </div>
-          <div className="lg:hidden flex flex-initial sm:w-1/2 w-1/3 justify-end">
-            {/* <div className="flex"> */}
+          <div className="xl:hidden flex flex-initial sm:w-1/2 w-1/3 justify-end">
             {contacts.map((contact, index) => index > 0 && (
-              <NavLinks key={index} icon={contact.icon} href={contact.href} customCls={clsx("sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center", { "me-5": index != 3 })} />
+              <NavLinks key={index} icon={contact.icon} href={contact.href} customCls={clsx("lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center", { "me-5": index != 3 })} />
             ))}
           </div>
         </div>
-        {/* </div> */}
-
-        <div className="flex sm:px-10 px-5 md:py-2 sm:py-1.5 py-1 bg-white">
-          <div className="hidden sm:flex items-center flex-1 md:gap-10 gap-5">
+        {/* main navigation */}
+        <div className="flex lg:px-10 sm:px-[30px] px-5 lg:py-2 py-1 bg-white">
+          {/* desktop, laptop, tablet */}
+          <div className="hidden sm:flex items-center flex-1 lg:gap-10 gap-5">
             {navMenus.map((menu, index) => index <= 1 && (
               <Link
                 key={index}
                 href={menu.href}
-                className="md:text-base sm:text-sm text-xs text-bs-fourth hover:text-bs-third uppercase font-medium"
-              > 
+                className="lg:text-base sm:text-sm text-bs-fourth hover:text-bs-third uppercase font-medium"
+              >
                 {menu.name}
               </Link>
             ))}
@@ -70,14 +66,14 @@ export default function Navbar() {
             {/* TODO: mungkin ini logo bisa dibikinkyk web visesa */}
             {/* width={191} height={91} */}
             {/* TODO: bagusnya di laptoku: width={131} height={31} */}
-            <Image src="/imgs/logo.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className="md:w-[191px] sm:w-[141px] w-[97px] md:h-[91px] sm:h-[67px] h-[46px]" />
+            <Image src="/imgs/logo.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className="xl:w-[191px] sm:w-[141px] w-[97px] xl:h-[91px] sm:h-[67px] h-[46px]" />
           </Link>
-          <div className="hidden sm:flex flex-1 justify-end items-center md:gap-10 gap-5">
+          <div className="hidden sm:flex flex-1 justify-end items-center lg:gap-10 gap-5">
             {navMenus.map((menu, index) => index > 1 && (
               <Link
                 key={index}
                 href={menu.href}
-                className="md:text-base sm:text-sm text-bs-fourth hover:text-bs-third uppercase font-medium"
+                className="lg:text-base sm:text-sm text-bs-fourth hover:text-bs-third uppercase font-medium"
               >
                 {menu.name}
               </Link>

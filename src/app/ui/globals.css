@@ -11,6 +11,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 /* #homepageHero {
   background-image: url("/imgs/hero.jpg");
   background-color: #332C11;
