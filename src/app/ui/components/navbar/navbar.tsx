@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image"
 import { faBars, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -5,6 +6,7 @@ import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import NavLinks from "./navlinks";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const contacts = [
@@ -13,14 +15,29 @@ export default function Navbar() {
     { icon: faWhatsapp, href: "https://wa.me/+62881038440302" },
     { icon: faInstagram, href: "https://www.instagram.com/infinityprittyjewellery" }
   ]
-
   const navMenus = [
     { name: "Home", href: "/" },
     { name: "Categories", href: "/#productCategoriesSection" },
     { name: "Testimonials", href: "/#testimonialsSection" },
     { name: "Blog", href: "/" },
   ]
+  const [logoSize, setLogoSize] = useState("md:w-full w-3/4")
 
+  function handleLogoSize() {
+    if (window.scrollY > 0) {
+      setLogoSize("md:w-3/5 w-[97px]")
+    } else {
+      setLogoSize("md:w-full w-3/4")
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleLogoSize)
+
+    return () => {
+      window.removeEventListener("scroll", handleLogoSize)
+    }
+  }, [handleLogoSize])
   return (
     <header className="fixed w-full shadow-[0_1px_8px_2px_rgba(0,0,0,0.25)] z-10">
       <nav>
@@ -49,7 +66,7 @@ export default function Navbar() {
           </div>
         </div>
         {/* main navigation */}
-        <div className="flex lg:px-10 sm:px-[30px] px-5 lg:py-2 py-1 bg-white">
+        <div className="flex items-center lg:px-10 sm:px-[30px] px-5 lg:py-2 py-1 bg-white relative">
           {/* desktop, laptop, tablet */}
           <div className="hidden sm:flex items-center flex-1 lg:gap-10 gap-5">
             {navMenus.map((menu, index) => index <= 1 && (
@@ -62,11 +79,11 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          <Link href={navMenus[0].href} className="mx-auto">
+          <Link href={navMenus[0].href} className="flex justify-center mx-auto">
             {/* TODO: mungkin ini logo bisa dibikinkyk web visesa */}
             {/* width={191} height={91} */}
             {/* TODO: bagusnya di laptoku: width={131} height={31} */}
-            <Image src="/imgs/logo.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className="xl:w-[191px] sm:w-[141px] w-[97px] xl:h-[91px] sm:h-[67px] h-[46px]" />
+            <Image id="navbarLogo" src="/imgs/logo.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} />
           </Link>
           <div className="hidden sm:flex flex-1 justify-end items-center lg:gap-10 gap-5">
             {navMenus.map((menu, index) => index > 1 && (
@@ -79,7 +96,7 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          <div className="sm:hidden flex justify-end">
+          <div className="sm:hidden absolute right-5 ">
             <button>
               <FontAwesomeIcon icon={faBars} className="w-3.5 text-bs-fourth hover:text-bs-third"></FontAwesomeIcon>
             </button>

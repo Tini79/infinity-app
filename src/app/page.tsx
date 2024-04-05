@@ -8,12 +8,14 @@ import Hero from "./ui/components/hero";
 export default function Home() {
   const categories = [
     { name: "Tri Hita Karana Bracelets", image: "/imgs/carousel-1.jpg", href: "/category" },
+    { name: "Red String Bracelets", image: "/imgs/carousel-2.jpg", href: "/" },
     { name: "Red String Bracelets", image: "/imgs/carousel-2.jpg", href: "/" }
   ]
 
   const testimonials = [
     { custName: "Ajeng", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" },
     { custName: "Bram", productCategory: "Red String Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-2.jpg", href: "/" },
+    { custName: "Charlotte", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" },
     { custName: "Charlotte", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" }
   ]
 
@@ -40,8 +42,8 @@ export default function Home() {
       <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
       {/* design introduction */}
       <section className="lg:px-10 sm:px-[30px] px-5 lg:py-20 sm:py-[60px] py-10 md:flex items-center">
-        <div className="flex-1 md:mb-0 sm:mb-10 mb-5">
-          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" width={550} height={618} className="md:w-[550px] w-[376px] md:h-[618px] h-[422px]" />
+        <div className="flex-1 flex justify-center md:mb-0 sm:mb-10 mb-5">
+          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" width={550} height={618} className="md:w-[550px] w-[376px] h-full" />
         </div>
         <div className="lg:ml-10 md:ml-5 flex-1">
           <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-4 sm:mb-3 mb-2 !font-bold`}>Introduce About Our Design</h2>
@@ -53,18 +55,20 @@ export default function Home() {
       {/* TODO: coba bikin setiap section yg dituju pas scroll tampil di tengah" page */}
       <section id="productCategoriesSection" className="lg:px-10 sm:px-[30px] px-5 lg:py-20 sm:py-[60px] py-10 bg-bs-third--darker">
         <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>Product Categories</span>
-        <div className="lg:flex gap-5 lg:mt-10 sm:mt-[30px] mt-5">
-          {categories.map((category, index) => (
-            <>
-              <div className="w-full h-[338px] relative">
-                <Link key={index} href={category.href}>
-                  <span className="absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]"></span>
-                  <Image src={category.image} alt={category.image} width={590} height={338} className="w-full h-full object-cover"></Image>
-                  <span className={`${crimsonText.className} absolute lg:left-8 sm:left-6 left-4 inset-y-1/2 text-white hover:text-bs-secondary !font-bold lg:text-2xl sm:text[22px] text-xl`}>{category.name}</span>
-                </Link>
-              </div>
-            </>
-          ))}
+        <div className="relative overflow-y-hidden carousel-container xl:h-[338px] lg:h-[300px] sm:h-[188px] xs:h-[316px] h-[200px] lg:mt-10 sm:mt-[30px] mt-5">
+          <div className="absolute flex md:gap-5 gap-2.5 h-full">
+            {categories.map((category, index) => (
+              <>
+                <div key={index} className="relative md:w-[calc((100vw-100px)/2)] sm:w-[calc((100vw-50px)/2)] w-[calc(100vw-40px)] h-full">
+                  <Link href={category.href}>
+                    <span className="absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]"></span>
+                    <Image src={category.image} alt={category.image} width={590} height={338} className="w-full h-full object-cover"></Image>
+                    <span className={`${crimsonText.className} absolute lg:left-8 sm:left-6 left-4 inset-y-1/2 text-white hover:text-bs-secondary !font-bold lg:text-2xl sm:text[22px] text-xl`}>{category.name}</span>
+                  </Link>
+                </div>
+              </>
+            ))}
+          </div>
         </div>
       </section >
       <section id="testimonialsSection" className="lg:px-10 sm:px-[30px] px-5 lg:pt-[100px] sm:pt-[75px] pt-[50px] lg:pb-[52px] sm:pb-[39px] pb-[26px]">

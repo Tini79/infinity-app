@@ -20,7 +20,7 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-/* #homepageHero {
-  background-image: url("/imgs/hero.jpg");
-  background-color: #332C11;
-} */
+
+#navbarLogo {
+  transition: all 0.5s ease-out;
+}

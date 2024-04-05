@@ -40,40 +40,23 @@ export default function Carousel({ title, isCategory = false, isProduct = false,
     setCurrDisplays(displays)
   }
 
-  // function slideTo(imgIndex: number) {
-  //   console.log('kkkkk');
-
-  //   if (imgWidth) {
-  //     console.log(imgWidth, 'hah');
-
-  //     setSwipeTo(imgIndex == 1 ? swipeTo - imgWidth : swipeTo + imgWidth)
-  //   }
-  // }
-
   return (
     <>
       <div className="lg:mb-6 sm:mb-[18px] mb-3">
         <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>{title}</span>
       </div>
-      {/* lg:grid-cols-3 xs:grid-cols-2 */}
-      {/* lg:px-20 px-10 */}
-      <div className="carousel-container relative overflow-y-hidden mx-auto xl:h-[274px] md:h-[284px] xs:h-[324px] h-[234px]">
-        {/* <div className={`absolute w-[300px]`}> */}
-        {/*  lg:gap-4 gap-2: isCategory || isProduct */}
-        <div className={clsx("absolute flex", { "md:gap-4 gap-2": isCategory || isProduct, "xs:grid lg:gap-[50px] sm:gap-[30px] gap-[25px] lg:grid-cols-3 xs:grid-cols-2": !isCategory && !isProduct && !isAllProducts, "grid lg:gap-x-3 gap-x-1.5 lg:grid-cols-4 md:grid-cols-3 xs:grid-cols-4 grid-cols-2": isAllProducts })}>
-          {/* relative xs:w-full w-5/6 mx-auto */}
+      <div className={clsx("mx-auto", { "carousel-container relative overflow-y-hidden": isCategory || isProduct || isAllProducts, "xl:h-[274px] md:h-[284px] xs:h-[324px] h-[234px]": isCategory || isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts })}>
+        <div className={clsx({ "absolute flex h-full": isCategory || isProduct || isAllProducts, "md:gap-4 gap-2": isCategory || isProduct, "grid lg:gap-[50px] sm:gap-[30px] gap-[25px] lg:grid-cols-3 xs:grid-cols-2": !isCategory && !isProduct && !isAllProducts, "flex lg:gap-x-3 gap-x-1.5": isAllProducts })}>
           {images.map((image, i) => isCategory ? (
             <div key={i} id={`image${i}`} className="relative flex-1 xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] mx-auto" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
               <Link href={image.href}>
-                {/* TODO: width={388} height={327} */}
                 <Image src={image.path} alt={image.path} width={388} height={274} className="w-full h-full object-cover" />
                 <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
               </Link>
             </div>
           ) : (isAllProducts ? (
-            <div>
+            <div className="relative flex-1 xl:w-[calc((100vw-128px)/5)] lg:w-[calc((100vw-116px)/4)] md:w-[calc((100vw-72px)/3)] xs:w-[calc((100vw-52px)/2)] w-[calc((100vw-46px)/2)] ">
               <Link key={i} href={image.href}>
-                {/*  width={272} height={248}  */}
                 <Image src={image.path} alt={image.path} width={272} height={248} className="w-full h-full object-cover" />
               </Link>
             </div>
@@ -84,8 +67,8 @@ export default function Carousel({ title, isCategory = false, isProduct = false,
                 <section>
                   <Image src={image.path} alt={image.path} width={100} height={329} className="w-full h-4/5 object-cover lg:mb-2 sm:mb-1.5 mb-1" />
                   <div className="lg:mb-4 sm:mb-3 mb-2">
-                    <h4 className={`${crimsonText.className} lg:text-[24px] sm:text-[22px] text-[20px] !font-bold lg:mb-4 sm:mb-3 mb-2`}>{image.name}</h4>
-                    <span>$222</span>
+                    <h4 className={`${crimsonText.className} lg:text-lg sm:text-base text-sm !font-medium lg:mb-4 sm:mb-3 mb-2`}>{image.name}</h4>
+                    <span className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222</span>
                   </div>
                   {/* TODO: bikin biar button paling bawah diam */}
                   <Button btnType="btn-product" />
@@ -106,7 +89,6 @@ export default function Carousel({ title, isCategory = false, isProduct = false,
             </div>
           ))))}
         </div>
-        {/* </div> */}
       </div>
       {/* <button type="button" onClick={() => slideTo(0)}>prev</button>
       <button type="button" onClick={() => slideTo(1)}>next</button> */}
