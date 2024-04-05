@@ -22,7 +22,7 @@ export default function Category() {
       <section id="categoryHero" className="relative h-screen w-full bg-center flex items-center lg:mb-20 sm:mb-[60px] mb-10 bg-[url('/imgs/carousel-1.jpg')] bg-cover bg-no-repeat">
         <Hero isHomepage={false} title="Tri Hita Karana" subTitle="bracelets" />
       </section>
-      <section className="px-10 mb-20">
+      <section className="lg:px-10 sm:px-[30px] px-5 lg:mb-20 sm:mb-[60px] mb-10 ">
         <Carousel title="New Arrivals" isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" />
       </section>
       <Description isBgPrimary title="Cultivate Harmony Within & Around You" desc={`Inspired by the ancient Balinese philosophy \"Tri Hita Karana\" (meaning \"three causes of well-being\" or \"three paths to prosperity\"), the Tri Hita Karana bracelet emphasizes harmonious balance among three fundamental elements.`}>
@@ -51,7 +51,7 @@ export default function Category() {
           </div>
         </div>
       </section>
-      <Description customSectionCls="lg:mb-20 mb-10" isBgPrimary={false} hasCarousel title="The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we  choose.">
+      <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title="The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we  choose.">
         <Carousel />
       </Description>
       <section className="lg:px-10 sm:px-[30px] px-5 sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]">

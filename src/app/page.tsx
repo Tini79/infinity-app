@@ -5,6 +5,8 @@ import Description from "./ui/components/description";
 import Link from "next/link";
 import Button from "./ui/components/button";
 import Hero from "./ui/components/hero";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons/faStar";
 export default function Home() {
   const categories = [
     { name: "Tri Hita Karana Bracelets", image: "/imgs/carousel-1.jpg", href: "/category" },
@@ -14,7 +16,7 @@ export default function Home() {
 
   const testimonials = [
     { custName: "Ajeng", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" },
-    { custName: "Bram", productCategory: "Red String Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-2.jpg", href: "/" },
+    { custName: "Bram", productCategory: "Red String Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", image: "/imgs/carousel-2.jpg", href: "/" },
     { custName: "Charlotte", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" },
     { custName: "Charlotte", productCategory: "Tri Hita Karana Bracelets", testi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "/imgs/carousel-1.jpg", href: "/" }
   ]
@@ -22,7 +24,7 @@ export default function Home() {
   return (
     <>
       {/* hero */}
-      <section id="homepageHero" className="relative h-screen w-full bg-center flex items-center lg:mb-20 mb-10 bg-[url('/imgs/hero.jpg')] bg-cover bg-no-repeat">
+      <section id="homepageHero" className="relative h-screen w-full bg-center flex items-center lg:mb-20 sm:mb-[60px] mb-10  bg-[url('/imgs/hero.jpg')] bg-cover bg-no-repeat">
         <Hero isHomepage title="Discover Vibrant Jewelry for Every Soul" desc="Immerse yourself in the rich cultural heritage and spiritual essence of Bali with our authentic jewelry. Shop now and bring a piece of Bali home!" />
       </section >
       <section className="bg-bs-primary sm:p-20 p-10 lg:flex">
@@ -55,7 +57,7 @@ export default function Home() {
       {/* TODO: coba bikin setiap section yg dituju pas scroll tampil di tengah" page */}
       <section id="productCategoriesSection" className="lg:px-10 sm:px-[30px] px-5 lg:py-20 sm:py-[60px] py-10 bg-bs-third--darker">
         <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>Product Categories</span>
-        <div className="relative overflow-y-hidden carousel-container xl:h-[338px] lg:h-[300px] sm:h-[188px] xs:h-[316px] h-[200px] lg:mt-10 sm:mt-[30px] mt-5">
+        <div className="relative overflow-y-hidden carousel-container xl:h-[338px] lg:h-[300px] md:h-[250px] sm:h-[188px] xs:h-[316px] h-[200px] lg:mt-10 sm:mt-[30px] mt-5">
           <div className="absolute flex md:gap-5 gap-2.5 h-full">
             {categories.map((category, index) => (
               <>
@@ -77,25 +79,35 @@ export default function Home() {
           <span className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] !font-bold`}>What Our Client Say</span>
         </div>
         {/* TODO: slider */}
-        <div className="grid lg:grid-cols-3 xs:grid-cols-2 lg:gap-x-[30px] xs:gap-x-[15px]">
-          {testimonials.map((testi, index) => (
-            <>
-              <article className="lg:px-4 sm:px-3 px-2 lg:pt-4 sm:pt-3 pt-2 lg:pb-6 sm:pb-[18px] pb-3 mx-auto hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
-                <section>
-                  <Image key={index} src={testi.image} alt={testi.productCategory} width={348} height={313} className="lg:mb-2 sm:mb-1.5 mb-1 mx-auto" />
-                  <div className="text-center">
-                    {/* or here? */}
-                    <span className="lg:text-sm sm:text-xs text-[10px] text-bs-third">{testi.custName}</span>
-                    <h3 className={`${crimsonText.className} lg:mb-2 sm:mb-1.5 mb-1 lg:text-xl sm:text-lg text-base !font-bold`}>{testi.productCategory}</h3>
-                    <p className="lg:mb-10 sm:mb-[30px] mb-5 lg:text-sm sm:text-xs text-[10px] font-light">{testi.testi}</p>
-                    {/* TODO: stars here */}
-                    {/* TODO: aku ragu mau ubah ini ke text-sm atau biarin aja 16px ukurannya yah? coba tambahin underlinenya deh biar bisa mutusin */}
-                    <Link key={index} href={testi.href} className="text-bs-fourth lg:text-sm sm:text-xs text-[10px] font-medium hover:text-bs-third">View Product</Link>
-                  </div>
-                </section>
-              </article>
-            </>
-          ))}
+        <div className="relative carousel-container overflow-y-hidden xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]">
+          <div className="absolute flex h-full lg:gap-x-[30px] gap-x-[15px] py-1 pl-1">
+            {testimonials.map((testi, index) => (
+              <>
+                <article key={index} className="lg:w-[calc((100vw-148px)/3)] sm:w-[calc((100vw-83px)/2)] xs:w-[calc((100vw-63px)/2)] w-[calc((100vw-48px))] lg:px-4 sm:px-3 px-2 lg:pt-4 sm:pt-3 pt-2 lg:pb-6 sm:pb-[18px] pb-3 mx-auto hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
+                  <section className="h-full relative">
+                    <div className="h-1/2 lg:mb-2 sm:mb-1.5 mb-1">
+                      <Image src={testi.image} alt={testi.productCategory} width={348} height={313} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center">
+                      {/* or here? */}
+                      <span className="lg:text-sm sm:text-xs text-[10px] text-bs-third">{testi.custName}</span>
+                      <h3 className={`${crimsonText.className}  md:mb-1 mb-0.5 lg:text-xl sm:text-lg text-base !font-bold`}>{testi.productCategory}</h3>
+                      {/* TODO: nanti data jumlah star diambil dari testi user */}
+                      <div className="flex justify-center lg:mb-2 sm:mb-1.5 mb-1">
+                        <FontAwesomeIcon icon={faStar} className="lg:w-3.5 sm:w-3 w-2.5 text-bs-third opacity-50 hover:text-bs-third"></FontAwesomeIcon>
+                      </div>
+                      {/* lg:mb-10 sm:mb-[30px] mb-5  */}
+                      <p className="lg:text-sm sm:text-xs text-[10px] font-light">{testi.testi}</p>
+                      {/* TODO: aku ragu mau ubah ini ke text-sm atau biarin aja 16px ukurannya yah? coba tambahin underlinenya deh biar bisa mutusin */}
+                    </div>
+                    <div className="absolute w-full bottom-0 flex justify-center">
+                      <Link key={index} href={testi.href} className="text-bs-fourth lg:text-sm sm:text-xs text-[10px] font-medium hover:text-bs-third">View Product</Link>
+                    </div>
+                  </section>
+                </article>
+              </>
+            ))}
+          </div>
         </div>
       </section>
       <section className="bg-bs-primary--darker lg:pr-10 lg:flex lg:pb-0 pb-10">
