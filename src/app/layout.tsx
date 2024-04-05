@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { montserrat } from "@/app/ui/fonts";
 import "@/app/ui/globals.css";
-import Navbar from "./ui/components/navbar/navbar";
-import Footer from "./ui/components/footer";
-
+import Footer from "./ui/components/footer"
+import Navbar from "./ui/components/navbar/navbar"
+import Navigation from "./ui/components/navigation/navigation";
 
 export const metadata: Metadata = {
   title: "Infinity Pritty Jewellery",
@@ -19,12 +19,14 @@ export default function RootLayout({
     <html lang="en">
       {/* TODO: ini baru kerangkanya doang, efek slider sama underline dll belum keisi ini,
       ohh pada testimonials belum isi stars juga, double check lagi yak */}
+      { }
       <body className={`${montserrat.className} antialiased`} >
-        <Navbar></Navbar>
+        <Navigation children={children}></Navigation>
+        {/* <Navbar></Navbar>
         {children}
-        {/* TODO: working on footer */}
-        <Footer></Footer>
+        <Footer></Footer> */}
       </body>
     </html>
   );
 }
+

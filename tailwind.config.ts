@@ -16,7 +16,7 @@ const config: Config = {
         "bs-secondary--less-darker": "#FEDC56",
         "bs-secondary--darker": "#FEE378",
         "bs-third": "#675823",
-        "bs-third--darker": "#E1DED3",
+        "bs-third--lighter": "#E1DED3",
         "bs-fourth": "#332C11"
       },
       backgroundImage: {

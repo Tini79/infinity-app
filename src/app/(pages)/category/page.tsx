@@ -1,8 +1,8 @@
-import Button from "../ui/components/button";
-import Carousel from "../ui/components/carousel";
-import Description from "../ui/components/description";
-import Hero from "../ui/components/hero";
-import { crimsonText } from "../ui/fonts";
+import Button from "../../ui/components/button";
+import Carousel from "../../ui/components/carousel";
+import Description from "../../ui/components/description";
+import Hero from "../../ui/components/hero";
+import { crimsonText } from "../../ui/fonts";
 import Image from "next/image"
 
 export default function Category() {

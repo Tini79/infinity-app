@@ -11,10 +11,11 @@ interface CarouselProps {
   isCategory?: boolean,
   isProduct?: boolean,
   isAllProducts?: boolean,
-  productCardCls?: string
+  productCardCls?: string,
+  isAuth?: boolean
 }
 
-export default function Carousel({ title, isCategory = false, isProduct = false, isAllProducts = false, productCardCls = "" }: CarouselProps) {
+export default function Carousel({ title, isCategory = false, isProduct = false, isAllProducts = false, productCardCls = "", isAuth = false }: CarouselProps) {
   // TODO nanti untuk desc dan href boleh null DAN MUNGKIN UNTUK TIPE DATANYA BISA DIBIKININI INTERFACE
   const images = [
     { name: "Sandalwood", path: "/imgs/carousel-1.jpg", desc: "We choose sandalwood because it has become a spiritual wood in Bali. In some ceremonies, sandalwood is used to symbolize the relationship between humans, nature, and the environment (balance of nature).", href: "/category" },
@@ -72,9 +73,12 @@ export default function Carousel({ title, isCategory = false, isProduct = false,
                   <h4 className={`${crimsonText.className} lg:text-lg sm:text-base text-sm !leading-tight !font-bold lg:mb-3 sm:mb-[9px] mb-1.5`}>{image.name}</h4>
                   {/* TODO:  JANGAN DIHAPUS INI SPAN! nanti kondisikan jika ada diskon */}
                   {/* <s className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222&nbsp;</s> */}
-                  <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">$220</span>
+                  {isAuth && (
+                    <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">$220</span>
+                  )}
                 </div>
                 <div className="absolute w-full bottom-0">
+                  {/* TODO: mungkin ini nanti jadiin config kayak sistem cakra, kan di localstorage itu diubah */}
                   <Button btnType="btn-product" />
                 </div>
               </section>
