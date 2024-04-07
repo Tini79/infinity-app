@@ -52,7 +52,7 @@ export default function Category() {
         </div>
       </section>
       <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title="The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we  choose.">
-        <Carousel />
+        <Carousel data={productList} />
       </Description>
       <section className="lg:px-10 sm:px-[30px] px-5 sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]">
         <Carousel title="Most Popular" isProduct />
