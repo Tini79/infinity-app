@@ -26,14 +26,5 @@ html {
 }
 
 #aside {
-  transition: left 50s ease-out forwards;
-}
-
-@keyframe slideIn {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  transition: left .5s ease;
 }

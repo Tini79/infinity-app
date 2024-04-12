@@ -31,7 +31,6 @@ export default function Navbar() {
     const aside = document.getElementById("aside")
     aside?.classList.toggle("-left-full")
     aside?.classList.toggle("left-0")
-    // aside?.classList.toggle("w-full")
   })
 
   return (
