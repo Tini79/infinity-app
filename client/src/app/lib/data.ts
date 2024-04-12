@@ -2,7 +2,7 @@
 import axios from "axios"
 
 // export async function getCategories({ token }: { token: string | null }) {
-  export async function getCategories(){
+export async function getCategories() {
   try {
     // const headers = {
     //   "Content-Type": "application-json",
@@ -49,5 +49,15 @@ export async function getProductsByCategory(slug: string) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch product data by category.');
+  }
+}
+
+export async function getCountries() {
+  try {
+    const { data } = await axios.get("http://localhost:3200/countries")
+    return data.data
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch country data.');
   }
 }

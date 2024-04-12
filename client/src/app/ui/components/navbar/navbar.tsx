@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image"
-import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose, faUser } from "@fortawesome/free-solid-svg-icons";
 import NavLinks from "./navlinks";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,27 +39,41 @@ export default function Navbar() {
         <nav>
           <div className="bg-bs-primary--darker lg:py-3 sm:py-2 py-1.5 lg:px-10 sm:px-[30px] px-5 flex">
             {/* desktop, laptop, tablet */}
-            <div className="hidden xl:flex flex-1">
+            <ul className="hidden xl:flex items-center flex-1 gap-10">
               {contacts.map((contact: any, i: number) => i <= 1 && (
-                <NavLinks key={i} icon={contact.icon} href={contact.href} isPhone={contact.isPhone} isEmail={contact.isEmail} val={contact.value} customCls="text-sm text-bs-secondary--lighter flex me-10  hover:text-bs-secondary--darker flex items-center" />
+                <li key={i}>
+                  <NavLinks icon={contact.icon} href={contact.href} isPhone={contact.isPhone} isEmail={contact.isEmail} val={contact.value} customCls="text-sm text-bs-secondary--lighter flex hover:text-bs-secondary--darker flex items-center" />
+                </li>
               ))}
-            </div>
-            <div className="hidden xl:flex flex-1 justify-end">
+            </ul>
+            <ul className="hidden xl:flex items-center flex-1 justify-end gap-10">
               {contacts.map((contact: any, i: number) => i > 1 && (
-                <NavLinks key={i} icon={contact.icon} href={contact.href} customCls={clsx("text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center", { "me-10": i != 3 })} />
+                <li key={i}>
+                  <NavLinks icon={contact.icon} href={contact.href} customCls="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                </li>
               ))}
-            </div>
+              <li>
+                <Link href="/login">
+                  <FontAwesomeIcon icon={faUser} className="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
+                </Link>
+              </li>
+            </ul>
             {/* mobile */}
-            <div className="xl:hidden flex flex-initial sm:w-1/2 w-2/3">
-              {contacts.map((contact: any, i: number) => i < 1 && (
-                <NavLinks key={i} icon={contact.icon} href={contact.href} isPhone={contact.isPhone} isEmail={contact.isEmail} val={contact.value} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter flex me-10  hover:text-bs-secondary--darker flex items-center" />
-              ))}
-            </div>
-            <div className="xl:hidden flex flex-initial sm:w-1/2 w-1/3 justify-end">
+            <ul className="xl:hidden flex items-center flex-initial sm:w-1/2 w-2/3 gap-10">
+              <li>
+                <NavLinks icon={contacts[0].icon} href={contacts[0].href} isPhone={contacts[0].isPhone} val={contacts[0].value} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter flex hover:text-bs-secondary--darker flex items-center" />
+              </li>
+            </ul>
+            <ul className="xl:hidden flex items-center flex-initial sm:w-1/2 w-1/3 justify-end gap-5">
               {contacts.map((contact: any, i: number) => i > 0 && (
-                <NavLinks key={i} icon={contact.icon} href={contact.href} customCls={clsx("lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center", { "me-5": i != 3 })} />
+                <li>
+                  <NavLinks key={i} icon={contact.icon} href={contact.href} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                </li>
               ))}
-            </div>
+              <li>
+                <NavLinks icon={faUser} href="/login" customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+              </li>
+            </ul>
           </div>
           {/* main navigation */}
           <div className="flex items-center lg:px-10 sm:px-[30px] px-5 lg:py-2 py-1 bg-white relative">
@@ -76,8 +90,6 @@ export default function Navbar() {
               ))}
             </div>
             <Link href={navMenus[0].href} className="flex justify-center mx-auto">
-              {/* TODO: mungkin ini logo bisa dibikinkyk web visesa */}
-              {/* width={191} height={91} */}
               {/* TODO: bagusnya di laptoku: width={131} height={31} */}
               <Image id="navbarLogo" src="/imgs/brand-logo-darker.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} />
             </Link>
@@ -113,33 +125,32 @@ export default function Navbar() {
               {navMenus.map((menu: any, i: number) => (
                 <li key={i} className="mb-7">
                   <Link onClick={toggleSideMenu}
-                  key={i}
-                  href={menu.href}
-                  className="text-2xl text-bs-secondary--lighter hover:text-bs-secondary--darker uppercase font-medium"
+                    key={i}
+                    href={menu.href}
+                    className="text-2xl text-bs-secondary--lighter hover:text-bs-secondary--darker uppercase font-medium"
                   >
-                  {menu.name}
-                </Link>
-                </li>
-              ))}
-          </ul>
-        </div>
-        <div className="absolute inset-x-5 flex justify-center bottom-5">
-          <div>
-            <ul className="flex justify-center gap-5">
-              {contacts.map((contact: any, i: number) => (
-                <li key={i}>
-                  {/* // <NavLinks key={i} icon={contact.icon} href={contact.href} customCls={clsx("text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center", { "me-10": i != 3 })} /> */}
-                  <Link onClick={toggleSideMenu} key={i} href={contact.href}>
-                    <FontAwesomeIcon icon={contact.icon} className="text-bs-secondary--lighter hover:text-bs-secondary--darker w-5 h-5"></FontAwesomeIcon>
+                    {menu.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <span className="font-light text-[10px] text-bs-secondary--lighter">&copy; 2024️ <Link onClick={toggleSideMenu} href="/" className="hover:text-bs-secondary--darker">Infinity Pritty Jewellery</Link>. All rights reserved</span>
+          </div>
+          <div className="absolute inset-x-5 flex justify-center bottom-5">
+            <div>
+              <ul className="flex justify-center gap-5">
+                {contacts.map((contact: any, i: number) => (
+                  <li key={i}>
+                    <Link onClick={toggleSideMenu} key={i} href={contact.href}>
+                      <FontAwesomeIcon icon={contact.icon} className="text-bs-secondary--lighter hover:text-bs-secondary--darker w-5 h-5"></FontAwesomeIcon>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <span className="font-light text-[10px] text-bs-secondary--lighter">&copy; 2024️ <Link onClick={toggleSideMenu} href="/" className="hover:text-bs-secondary--darker">Infinity Pritty Jewellery</Link>. All rights reserved</span>
+            </div>
           </div>
         </div>
-      </div>
-    </aside >
+      </aside >
     </>
   )
 }

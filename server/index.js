@@ -5,8 +5,10 @@ const fs = require('fs')
 const response = require('./response')
 const bcrypt = require('bcrypt')
 const app = express()
-const authenticateToken = require('./middleware')
+// const authenticateToken = require('./middleware')
 const { generateAccessToken } = require('./auth')
+const { body } = require('express-validator')
+const { validationResult } = require('express-validator')
 const port = 3200
 
 app.use(cors())
@@ -58,45 +60,80 @@ app.get('/category/:slug', (req, res) => {
   response(200, data, `Successfully retrieved ${req.params.slug} category data`, res)
 })
 
-app.post('/registration', (req, res) => {
-  // TODO: validasi untuk data email dan username yg harus unik, belum isi
-  // TODO: ingat validasi, country_code atau country_name yg bakalan disimpan di db, hash pass dan tanggal yg diinsert formatnya kyk gimana
+const registerValidator = [
+  body('data.full_name').trim().notEmpty(),
+  body('data.username').trim().notEmpty(),
+  body('data.country').trim().notEmpty(),
+  body('data.birthday').trim().notEmpty().isISO8601(),
+  body('data.email').trim().notEmpty().isEmail(),
+  body('data.password').trim().notEmpty()
+]
+
+const loginValidator = [
+  body('data.username').trim().notEmpty(),
+  body('data.password').trim().notEmpty()
+]
+
+app.post('/registration', registerValidator, (req, res) => {
+  const errors = validationResult(req)
+  if (errors.errors.length > 0) {
+    return response(400, "", "Invalid data format", res)
+  }
+
+  // format date
+  const date = new Date(req.body.data.birthday)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const formattedBirthday = `${year}-${month}-${day}`
+  // initialize data
   const fullName = req.body.data.full_name
   const username = req.body.data.username
   const country = req.body.data.country
-  const birthday = req.body.data.birthday
+  const birthday = formattedBirthday
   const email = req.body.data.email
   const plainPassword = req.body.data.password
   const saltRounds = 11
-  // TODO: kyknya dulu gw pernah nonton dari video sandhika galih soal callback ini deh, jadi aku bisa ngakses variable dari luar callback but caranya agak ribet emang, coba cari videonya lagi deh
-  bcrypt.genSalt(saltRounds, (err, salt) => {
-    bcrypt.hash(plainPassword, salt, (err, hashed) => {
+
+  const sql1 = `SELECT * FROM users WHERE email = ? OR username = ?`
+  con.query(sql1, [email, username], (err, fields) => {
+    if (err) throw err
+    if (fields.length > 0) {
+      return response(400, "", "Data already exist!", res)
+    }
+
+    bcrypt.genSalt(saltRounds, (err, salt) => {
       if (err) throw err
-      const sql = `INSERT INTO users (full_name, username, country, birthday, email, password) VALUES (?, ?, ?, ?, ?, ?)`
-      con.query(sql, [fullName, username, country, birthday, email, hashed], (err, fields) => {
-        // TODO: nanti coba pelajari ini lebih dalam yak tentang try catch atau middlewarenya; obrolannya ad di chat gpt
-        if (err) {
-          // TODO: bahaya banget pakai ini throw cuk, sekali kena sistem bakalan berhenti terus
-          throw err
-          // response(400, "", "Database error!", res)
-          // return
-        }
-        if (fields.affectedRows) response(200, `Inserted Id ${fields.insertId}`, "Successfully registered new user", res)
+      bcrypt.hash(plainPassword, salt, (err, hashed) => {
+        const sql2 = `INSERT INTO users (full_name, username, country_code, birthday, email, password) VALUES (?, ?, ?, ?, ?, ?)`
+        con.query(sql2, [fullName, username, country, birthday, email, hashed], (err, fields) => {
+          // TODO: nanti coba pelajari ini lebih dalam yak tentang try catch atau middlewarenya; obrolannya ad di chat gpt
+          if (err) {
+            // TODO: bahaya banget pakai ini throw cuk, sekali kena sistem bakalan berhenti terus
+            throw err
+            // response(400, "", "Database error!", res)
+            // return
+          }
+          if (fields.affectedRows) response(200, `Inserted Id ${fields.insertId}`, "Successfully registered new user", res)
+        })
       })
     })
   })
 })
 
-app.post('/login', (req, res) => {
-  const username = req.body.insertedData.username
+app.post('/login', loginValidator, (req, res) => {
+  const errors = validationResult(req)
+  if (errors.errors.length > 0) {
+    return response(400, "", "Invalid data format", res)
+  }
+
+  const username = req.body.data.username
   // TODO: belum isi response jika datanya nggak ada gimana
   const sql = `SELECT password FROM users WHERE username = ?`
   con.query(sql, [username], (err, fields) => {
     if (err) throw err
-    bcrypt.compare(req.body.insertedData.password, fields[0].password, (err, res2) => {
-      if (err) {
-        throw err
-      }
+    bcrypt.compare(req.body.data.password, fields[0].password, (err, res2) => {
+      if (err) throw err
 
       if (res2) {
         const accessToken = generateAccessToken(username)
@@ -114,6 +151,7 @@ app.listen(port, () => {
 
 const getAllData = (category, param = "") => {
   const data = fs.readFileSync("./lib/data.js", "utf-8", (err, data) => data)
+  if (err) throw err
   const jsonData = JSON.parse(data)
   if (param) {
     return jsonData[0][param]

@@ -40,11 +40,12 @@ export default function Carousel({ title, data, isCategory = false, isProduct = 
       <div className="lg:mb-6 sm:mb-[18px] mb-3">
         <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>{title}</span>
       </div>
-      <div className={clsx("mx-auto", { "carousel-container relative overflow-y-hidden": isCategory || isProduct || isAllProducts || isAllCategories, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[338px] lg:h-[300px] md:h-[250px] sm:h-[188px] xs:h-[316px] h-[200px] lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
+      {/* TODO nah tambahin nih */}
+      <div className={clsx("mx-auto", { " overflow-x-hidden": isCategory || isProduct || isAllProducts, "overflow-x-scroll": isAllCategories, "carousel-container relative": isCategory || isProduct || isAllProducts || isAllCategories, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[338px] lg:h-[300px] md:h-[250px] sm:h-[188px] xs:h-[316px] h-[200px] lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
         <div className={clsx({ "absolute flex h-full": isCategory || isProduct || isAllProducts || isAllCategories, "md:gap-4 gap-2": isCategory || isProduct, "grid lg:gap-[50px] sm:gap-[30px] xs:gap-[25px] gap-5 lg:grid-cols-3 grid-cols-2": !isCategory && !isProduct && !isAllProducts && !isAllCategories, "flex lg:gap-x-3 gap-x-1.5": isAllProducts, "md:gap-5 gap-2.5": isAllCategories })}>
           {data.map((image: any, i: number) => isCategory ? (
             <div key={i} id={`image${i}`} className="relative xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] mx-auto" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
-              <Link href={`/category${image.href}`}>
+              <Link href={`category/${image.href}`}>
                 <Image src={`/${image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
                 <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
               </Link>

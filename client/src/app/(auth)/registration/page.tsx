@@ -1,10 +1,10 @@
-import clsx from "clsx";
 import Button from "../../ui/components/button";
 import { crimsonText } from "../../ui/fonts";
 import { registerUser } from "@/app/lib/actions";
+import { getCountries } from "@/app/lib/data";
 
-export default function Registration() {
-
+export default async function Registration() {
+  const countries = await getCountries()
   return (
     <>
       <section className="bg-bs-third--lighter h-screen flex justify-center items-center">
@@ -14,40 +14,41 @@ export default function Registration() {
           </div>
           <form action={registerUser}>
             <>
-            {/* TODO: ukuran dari para input kagak sama nih lebarnya */}
+              {/* TODO: ukuran dari para input kagak sama nih lebarnya */}
               <div>
                 <div className="sm:flex gap-4 w-full">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="fullName" className="block lg:text-sm sm:text-xs text-[10px]">Full Name</label>
-                    <input type="text" id="fullName" name="full_name" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                    <input required type="text" id="fullName" name="full_name" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="username" className="block lg:text-sm sm:text-xs text-[10px]">Username</label>
-                    <input type="text" id="username" name="username" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                    <input required type="text" id="username" name="username" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                 </div>
                 <div className="sm:flex gap-4">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
-                    <label htmlFor="country" className="block lg:text-sm sm:text-xs text-[10px]">Country</label>
-                    {/* TODO: nanti cari api gratis yakk */}
-                    <select name="country" id="country" className="w-full border-2 border-bs-third py-0.5 px-1" >
-                      <option value=""></option>
-                      <option value="ID">Indonesia</option>
-                    </select>
+                    <label htmlFor="birthday" className="block lg:text-sm sm:text-xs text-[10px]">Birthday</label>
+                    <input required type="date" id="birthday" name="birthday" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
-                    <label htmlFor="birthday" className="block lg:text-sm sm:text-xs text-[10px]">Birthday</label>
-                    <input type="date" id="birthday" name="birthday" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                    <label htmlFor="country" className="block lg:text-sm sm:text-xs text-[10px]">Country</label>
+                    <select required name="country" id="country" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
+                      <option value=""></option>
+                      {countries.map((country: any) => (
+                        <option key={country.id} value={country.iso2} className="lg:text-base sm:text-sm text-xs">{country.name}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
                 <div className="sm:flex gap-4">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="email" className="block lg:text-sm sm:text-xs text-[10px]">Email</label>
-                    <input type="email" id="email" name="email" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                    <input required type="email" id="email" name="email" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="password" className="block lg:text-sm sm:text-xs text-[10px]">Password</label>
-                    <input type="password" id="password" name="password" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                    <input required type="password" id="password" name="password" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                 </div>
               </div>

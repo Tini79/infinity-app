@@ -9,7 +9,7 @@ import { useFormState } from "react-dom";
 
 export default function Login() {
   const [state, formAction] = useFormState(loginUser, null)
-  handleSave(state)
+  // handleSave(state)
   if (state) {
     redirect("/")
   }
@@ -25,11 +25,11 @@ export default function Login() {
               <div>
                 <div className="lg:mb-4 sm:mb-[14px] mb-2">
                   <label htmlFor="username" className="block lg:text-sm sm:text-xs text-[10px]">Username</label>
-                  <input type="text" id="username" name="username" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                  <input  type="text" id="username" name="username" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                 </div>
                 <div className="">
                   <label htmlFor="password" className="block lg:text-sm sm:text-xs text-[10px]">Password</label>
-                  <input type="password" id="password" name="password" className="w-full border-2 border-bs-third py-0.5 px-1" />
+                  <input  type="password" id="password" name="password" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                 </div>
               </div>
             </>

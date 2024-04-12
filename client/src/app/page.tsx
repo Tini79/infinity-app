@@ -54,8 +54,9 @@ export default async function Home() {
           <h2 className="lg:mb-2 sm:mb-1.5 mb-1 uppercase lg:text-sm sm:text-xs text-[10px] lg:tracking-[4px] tracking-[2px]">Testimonials</h2>
           <span className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] !font-bold`}>What Our Client Say</span>
         </div>
+        {/* TODO: ini juga yak slidernya*/}
         {/* TODO: slider */}
-        <div className="relative carousel-container overflow-y-hidden xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]">
+        <div className="relative carousel-container overflow-x-hidden xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]">
           <div className="absolute flex h-full lg:gap-x-[30px] gap-x-[15px] py-1 pl-1">
             {testimonials.map((testi: any, index: number) => (
               <>

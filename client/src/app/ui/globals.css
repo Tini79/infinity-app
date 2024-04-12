@@ -12,6 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* select {
+  direction: rtl;
+} */
+
 .carousel-container::-webkit-scrollbar {
   display: none;
 }
@@ -26,5 +30,5 @@ html {
 }
 
 #aside {
-  transition: left .5s ease;
+  transition: left 0.5s ease;
 }
