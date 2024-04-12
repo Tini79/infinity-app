@@ -15,17 +15,17 @@ app.use(express.json())
 // TODO: belum kelar ini
 app.get('/countries', (req, res) => {
   const headers = new Headers()
-  headers.append("X-CSCAPI-KEY", "API_KEY")
-
+  headers.append("X-CSCAPI-KEY", "Sjk4Q2N4dlBrNG1vclVtY01HRFZtelhvdGdXQ2xzVVFqT3g1NTFFVg==")
   const reqOptions = {
     method: "GET",
     headers: headers,
     redirect: "follow"
   }
+
   fetch("https://api.countrystatecity.in/v1/countries", reqOptions)
     .then(response => response.text())
-    .then(res => console.log(res, 'fuuu'))
-    .catch(err => console.log("error:", err))
+    .then(resp => response(200, JSON.parse(resp), "Successfully retrieved country data!", res))
+    .catch(err => response(400, "", err, res))
 })
 
 app.get('/', (req, res) => {
