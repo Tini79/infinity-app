@@ -8,7 +8,6 @@ import Hero from "@/app/ui/components/hero";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons/faStar";
 import { getCategories, getPopularCategories, getTestimonials } from "./lib/data";
-// import { config } from "./lib/config";
 // TODO: coba lagi check pada carousel n testi: height foto tidak sesuai dg design
 export default async function Home() {
   const categories = await getCategories()
@@ -30,7 +29,7 @@ export default async function Home() {
         </div>
       </section>
       <section className="lg:px-10 sm:px-[30px] px-5 lg:py-[100px] sm:py-[75px] py-[50px]">
-        <Carousel title="Popular This Week" isCategory data={popularCategories} />
+        <Carousel id="popularThisWeek" title="Popular This Week" isCategory data={popularCategories} />
       </section>
       <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
       {/* design introduction */}
@@ -47,7 +46,7 @@ export default async function Home() {
       </section>
       {/* TODO: coba bikin setiap section yg dituju pas scroll tampil di tengah" page */}
       <section id="productCategoriesSection" className="lg:px-10 sm:px-[30px] px-5 lg:py-20 sm:py-[60px] py-10 bg-bs-third--lighter">
-        <Carousel title="Product Categories" isAllCategories data={categories} />
+        <Carousel id="productCategories" title="Product Categories" isAllCategories data={categories} />
       </section >
       <section id="testimonialsSection" className="lg:px-10 sm:px-[30px] px-5 lg:pt-[100px] sm:pt-[75px] pt-[50px] lg:pb-[52px] sm:pb-[39px] pb-[26px]">
         <div className="lg:mb-[52px] sm:mb-[39px] mb-[26px] text-center">

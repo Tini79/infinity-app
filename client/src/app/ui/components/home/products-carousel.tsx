@@ -1,10 +1,10 @@
 "use client"
-import { useState } from "react";
 import { getLoginToken } from "@/app/lib/config";
 import Carousel from "../carousel";
 import clsx from "clsx";
 
 interface ProductCarouselProps {
+  id: string,
   title: string,
   data: any,
   isProduct: boolean,
@@ -13,6 +13,7 @@ interface ProductCarouselProps {
 }
 
 export default function ProductsCarousel({
+  id,
   title,
   data,
   isProduct,
@@ -23,7 +24,7 @@ export default function ProductsCarousel({
   return (
     <>
       <section className={clsx("lg:px-10 sm:px-[30px] px-5", custCls)}>
-        <Carousel title={title} data={data} isProduct={isProduct} productCardCls={productCardCls} token={token} />
+        <Carousel id={id} title={title} data={data} isProduct={isProduct} productCardCls={productCardCls} token={token} />
       </section>
     </>
   )

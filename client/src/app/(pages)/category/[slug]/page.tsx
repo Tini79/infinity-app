@@ -32,7 +32,7 @@ export default async function Category({ params }: { params: { slug: string } })
       {/* <section className="lg:px-10 sm:px-[30px] px-5 lg:mb-20 sm:mb-[60px] mb-10 ">
         <Carousel title="New Arrivals" data={products.products} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" />
       </section> */}
-      <ProductsCarousel title="New Arrivals" data={products.products} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls="lg:mb-20 sm:mb-[60px] mb-10" />
+      <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.products} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls="lg:mb-20 sm:mb-[60px] mb-10" />
       <Description isBgPrimary title="Cultivate Harmony Within & Around You" desc={`Inspired by the ancient Balinese philosophy \"Tri Hita Karana\" (meaning \"three causes of well-being\" or \"three paths to prosperity\"), the Tri Hita Karana bracelet emphasizes harmonious balance among three fundamental elements.`}>
         <div className="md:flex grid justify-center items-center lg:gap-x-8 md:gap-x-7 gap-y-7 lg:px-10 px-5">
           {triHitaKarana.map((concept, index) => (
@@ -61,10 +61,10 @@ export default async function Category({ params }: { params: { slug: string } })
       </section>
       <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title="The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we  choose.">
         {/* <Carousel data={productList} /> */}
-        <Carousel data={images} />
+        <Carousel id="description" data={images} />
       </Description>
       {/* TODO: belum filter base on popular yak ini */}
-      <ProductsCarousel title="Most Popular" data={products.products} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />
+      <ProductsCarousel id="mostPopular" title="Most Popular" data={products.products} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />
       {/* all products */}
       <section className="lg:px-10 sm:px-[30px] px-5 sm:py-20 py-10">
         <div className="lg:mb-6 sm:mb-[18px] mb-3">
@@ -96,11 +96,11 @@ export default async function Category({ params }: { params: { slug: string } })
         </div>
         <div>
           {/* TODO: belum terfilter */}
-          <Carousel data={products.products} isAllProducts />
+          <Carousel id="allProducts" data={products.products} isAllProducts />
         </div>
       </section >
       <section className="lg:px-10 px-5 lg:py-20 py-10 bg-bs-fourth bg-opacity-[2%]">
-        <Carousel data={anotherCategories} title="See Also" isCategory />
+        <Carousel id="seeAlso" data={anotherCategories} title="See Also" isCategory />
       </section>
     </>
   )

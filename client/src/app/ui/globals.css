@@ -12,10 +12,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* select {
-  direction: rtl;
-} */
-
 .carousel-container::-webkit-scrollbar {
   display: none;
 }
@@ -23,6 +19,10 @@ html {
 .carousel-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+button:disabled .slider-icon {
+  color: rgba(103, 88, 35, 0.5);
 }
 
 #navbarLogo {

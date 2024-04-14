@@ -54,7 +54,7 @@ export default function Navbar() {
               ))}
               <li>
                 <Link href="/login">
-                  <FontAwesomeIcon icon={faUser} className="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={faUser} className="w-3.5 text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
                 </Link>
               </li>
             </ul>
@@ -71,7 +71,7 @@ export default function Navbar() {
                 </li>
               ))}
               <li>
-                <NavLinks icon={faUser} href="/login" customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                <NavLinks icon={faUser} href="/login" customCls="lg:w-3.5 sm:w-3 w-2.5 text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
               </li>
             </ul>
           </div>

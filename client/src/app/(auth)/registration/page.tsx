@@ -28,8 +28,12 @@ export default async function Registration() {
                 </div>
                 <div className="sm:flex gap-4">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
-                    <label htmlFor="birthday" className="block lg:text-sm sm:text-xs text-[10px]">Birthday</label>
-                    <input required type="date" id="birthday" name="birthday" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                    <label htmlFor="gender" className="block lg:text-sm sm:text-xs text-[10px]">Gender</label>
+                    <select required name="gender" id="gender" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
+                      <option value=""></option>
+                      <option value="F" className="lg:text-base sm:text-sm text-xs">Female</option>
+                      <option value="M" className="lg:text-base sm:text-sm text-xs">Male</option>
+                    </select>
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="country" className="block lg:text-sm sm:text-xs text-[10px]">Country</label>

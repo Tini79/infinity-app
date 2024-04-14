@@ -63,8 +63,8 @@ app.get('/category/:slug', (req, res) => {
 const registerValidator = [
   body('data.full_name').trim().notEmpty(),
   body('data.username').trim().notEmpty(),
+  body('data.gender').trim().notEmpty(),
   body('data.country').trim().notEmpty(),
-  body('data.birthday').trim().notEmpty().isISO8601(),
   body('data.email').trim().notEmpty().isEmail(),
   body('data.password').trim().notEmpty()
 ]
@@ -80,17 +80,11 @@ app.post('/registration', registerValidator, (req, res) => {
     return response(400, "", "Invalid data format", res)
   }
 
-  // format date
-  const date = new Date(req.body.data.birthday)
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  const formattedBirthday = `${year}-${month}-${day}`
   // initialize data
   const fullName = req.body.data.full_name
   const username = req.body.data.username
+  const gender = req.body.data.gender
   const country = req.body.data.country
-  const birthday = formattedBirthday
   const email = req.body.data.email
   const plainPassword = req.body.data.password
   const saltRounds = 11
@@ -105,8 +99,8 @@ app.post('/registration', registerValidator, (req, res) => {
     bcrypt.genSalt(saltRounds, (err, salt) => {
       if (err) throw err
       bcrypt.hash(plainPassword, salt, (err, hashed) => {
-        const sql2 = `INSERT INTO users (full_name, username, country_code, birthday, email, password) VALUES (?, ?, ?, ?, ?, ?)`
-        con.query(sql2, [fullName, username, country, birthday, email, hashed], (err, fields) => {
+        const sql2 = `INSERT INTO users (full_name, username, gender, country_code, email, password) VALUES (?, ?, ?, ?, ?, ?)`
+        con.query(sql2, [fullName, username, gender, country, email, hashed], (err, fields) => {
           // TODO: nanti coba pelajari ini lebih dalam yak tentang try catch atau middlewarenya; obrolannya ad di chat gpt
           if (err) {
             // TODO: bahaya banget pakai ini throw cuk, sekali kena sistem bakalan berhenti terus
@@ -151,7 +145,7 @@ app.listen(port, () => {
 
 const getAllData = (category, param = "") => {
   const data = fs.readFileSync("./lib/data.js", "utf-8", (err, data) => data)
-  if (err) throw err
+  
   const jsonData = JSON.parse(data)
   if (param) {
     return jsonData[0][param]
