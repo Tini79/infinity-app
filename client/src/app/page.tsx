@@ -28,7 +28,7 @@ export default async function Home() {
           <p className="lg:text-sm sm:text-xs text-[10px] lg:leading-6 sm:leading-5 leading-4 text-white text-justify">Founded in 2021, Infinity Pretty Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the "goodness of Bali" through our vibrant and spiritually inspired designs.</p>
         </div>
       </section>
-      <section className="lg:px-10 sm:px-[30px] px-5 lg:py-[100px] sm:py-[75px] py-[50px]">
+      <section className="px-10 lg:py-[100px] sm:py-[75px] py-[50px]">
         <Carousel id="popularThisWeek" title="Popular This Week" isCategory data={popularCategories} />
       </section>
       <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
@@ -49,45 +49,7 @@ export default async function Home() {
         <Carousel id="productCategories" title="Product Categories" isAllCategories data={categories} />
       </section >
       <section id="testimonialsSection" className="lg:px-10 sm:px-[30px] px-5 lg:pt-[100px] sm:pt-[75px] pt-[50px] lg:pb-[52px] sm:pb-[39px] pb-[26px]">
-        <div className="lg:mb-[52px] sm:mb-[39px] mb-[26px] text-center">
-          <h2 className="lg:mb-2 sm:mb-1.5 mb-1 uppercase lg:text-sm sm:text-xs text-[10px] lg:tracking-[4px] tracking-[2px]">Testimonials</h2>
-          <span className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] !font-bold`}>What Our Client Say</span>
-        </div>
-        {/* TODO: ini juga yak slidernya*/}
-        {/* TODO: slider */}
-        <div className="relative carousel-container overflow-x-hidden xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]">
-          <div className="absolute flex h-full lg:gap-x-[30px] gap-x-[15px] py-1 pl-1">
-            {testimonials.map((testi: any, index: number) => (
-              <>
-                <article key={index} className="lg:w-[calc((100vw-148px)/3)] sm:w-[calc((100vw-83px)/2)] xs:w-[calc((100vw-63px)/2)] w-[calc((100vw-48px))] lg:px-4 sm:px-3 px-2 lg:pt-4 sm:pt-3 pt-2 lg:pb-6 sm:pb-[18px] pb-3 mx-auto hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
-                  <section className="h-full relative">
-                    <div className="h-1/2 lg:mb-2 sm:mb-1.5 mb-1">
-                      <Image src={`/${testi.image}`} alt={testi.productCategory} width={348} height={313} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="text-center">
-                      {/* or here? */}
-                      <span className="lg:text-sm sm:text-xs text-[10px] text-bs-third opacity-50">{testi["customer-name"]}</span>
-                      {/*  md:mb-1 mb-0.5 */}
-                      <h3 className={`${crimsonText.className} lg:text-xl sm:text-lg text-base !font-bold`}>{testi["product-category"]}</h3>
-                      {/* TODO: nanti data jumlah star diambil dari testi user */}
-                      <div className="flex justify-center lg:mb-2 sm:mb-1.5 mb-1">
-                        <FontAwesomeIcon icon={faStar} className="lg:w-3.5 sm:w-3 w-2.5 text-bs-third opacity-50 hover:text-bs-third"></FontAwesomeIcon>
-                      </div>
-                      {/* lg:mb-10 sm:mb-[30px] mb-5  */}
-                      <div className="lg:px-4 sm:px-3 px-2">
-                        <p className="lg:text-sm sm:text-xs text-[10px] font-light">{testi.testimonial}</p>
-                      </div>
-                      {/* TODO: aku ragu mau ubah ini ke text-sm atau biarin aja 16px ukurannya yah? coba tambahin underlinenya deh biar bisa mutusin */}
-                    </div>
-                    <div className="absolute w-full bottom-0 flex justify-center">
-                      <Link key={index} href={`/category${testi.href}`} className="text-bs-fourth lg:text-sm sm:text-xs text-[10px] font-medium hover:text-bs-third underline lg:underline-offset-8 sm:underline-offset-[6px] underline-offset-4">View Product</Link>
-                    </div>
-                  </section>
-                </article>
-              </>
-            ))}
-          </div>
-        </div>
+        <Carousel id="testimonials" title={["Testimonials", "What Our Client Say"]} isTestimonials data={testimonials} />
       </section>
       <section className="bg-bs-primary--darker lg:pr-10 lg:flex lg:pb-0 pb-10">
         <div className="flex-initial lg:w-[45%]">

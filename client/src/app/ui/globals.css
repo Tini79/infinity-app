@@ -25,6 +25,10 @@ button:disabled .slider-icon {
   color: rgba(103, 88, 35, 0.5);
 }
 
+button.center-slider:disabled  {
+  background-color: rgba(103, 88, 35, 0.5);
+}
+
 #navbarLogo {
   transition: all 0.5s ease-out;
 }

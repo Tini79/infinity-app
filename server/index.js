@@ -11,10 +11,16 @@ const { body } = require('express-validator')
 const { validationResult } = require('express-validator')
 const port = 3200
 
-app.use(cors())
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST'],
+  allowHeaders: ['Content-Type'],
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 
-// TODO: belum kelar ini
 app.get('/countries', (req, res) => {
   const headers = new Headers()
   headers.append("X-CSCAPI-KEY", "Sjk4Q2N4dlBrNG1vclVtY01HRFZtelhvdGdXQ2xzVVFqT3g1NTFFVg==")
@@ -145,7 +151,7 @@ app.listen(port, () => {
 
 const getAllData = (category, param = "") => {
   const data = fs.readFileSync("./lib/data.js", "utf-8", (err, data) => data)
-  
+
   const jsonData = JSON.parse(data)
   if (param) {
     return jsonData[0][param]
