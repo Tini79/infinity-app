@@ -66,8 +66,8 @@ export default function Navbar() {
             </ul>
             <ul className="xl:hidden flex items-center flex-initial sm:w-1/2 w-1/3 justify-end gap-5">
               {contacts.map((contact: any, i: number) => i > 0 && (
-                <li>
-                  <NavLinks key={i} icon={contact.icon} href={contact.href} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                <li key={i}>
+                  <NavLinks icon={contact.icon} href={contact.href} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
                 </li>
               ))}
               <li>
@@ -125,7 +125,6 @@ export default function Navbar() {
               {navMenus.map((menu: any, i: number) => (
                 <li key={i} className="mb-7">
                   <Link onClick={toggleSideMenu}
-                    key={i}
                     href={menu.href}
                     className="text-2xl text-bs-secondary--lighter hover:text-bs-secondary--darker uppercase font-medium"
                   >
@@ -140,7 +139,7 @@ export default function Navbar() {
               <ul className="flex justify-center gap-5">
                 {contacts.map((contact: any, i: number) => (
                   <li key={i}>
-                    <Link onClick={toggleSideMenu} key={i} href={contact.href}>
+                    <Link onClick={toggleSideMenu} href={contact.href}>
                       <FontAwesomeIcon icon={contact.icon} className="text-bs-secondary--lighter hover:text-bs-secondary--darker w-5 h-5"></FontAwesomeIcon>
                     </Link>
                   </li>
