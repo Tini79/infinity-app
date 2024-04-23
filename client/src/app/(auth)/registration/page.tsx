@@ -19,17 +19,17 @@ export default async function Registration() {
                 <div className="sm:flex gap-4 w-full">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="fullName" className="block lg:text-sm sm:text-xs text-[10px]">Full Name</label>
-                    <input required type="text" id="fullName" name="full_name" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                    <input required type="text" id="fullName" name="full_name" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="username" className="block lg:text-sm sm:text-xs text-[10px]">Username</label>
-                    <input required type="text" id="username" name="username" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                    <input required type="text" id="username" name="username" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                 </div>
                 <div className="sm:flex gap-4">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="gender" className="block lg:text-sm sm:text-xs text-[10px]">Gender</label>
-                    <select required name="gender" id="gender" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
+                    <select required name="gender" id="gender" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
                       <option value=""></option>
                       <option value="F" className="lg:text-base sm:text-sm text-xs">Female</option>
                       <option value="M" className="lg:text-base sm:text-sm text-xs">Male</option>
@@ -37,7 +37,7 @@ export default async function Registration() {
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="country" className="block lg:text-sm sm:text-xs text-[10px]">Country</label>
-                    <select required name="country" id="country" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
+                    <select required name="country" id="country" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
                       <option value=""></option>
                       {countries.map((country: any) => (
                         <option key={country.id} value={country.iso2} className="lg:text-base sm:text-sm text-xs">{country.name}</option>
@@ -48,11 +48,11 @@ export default async function Registration() {
                 <div className="sm:flex gap-4">
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="email" className="block lg:text-sm sm:text-xs text-[10px]">Email</label>
-                    <input required type="email" id="email" name="email" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                    <input required type="email" id="email" name="email" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                   <div className="w-full lg:mb-4 sm:mb-[14px] mb-2">
                     <label htmlFor="password" className="block lg:text-sm sm:text-xs text-[10px]">Password</label>
-                    <input required type="password" id="password" name="password" className="w-full border-2 border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                    <input required type="password" id="password" name="password" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                   </div>
                 </div>
               </div>

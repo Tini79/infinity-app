@@ -28,7 +28,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
   const [isStartLimit, setIsStartLimit] = useState(true)
   const [isEndLimit, setIsEndLimit] = useState(false)
   const carouselContainer: HTMLElement | null = document.getElementById(`carouselContainer-${id}`)
-  console.log(carouselContainer?.children.length, `carouselContainer-${id}`);
 
   let carouselChildrenCounts = carouselContainer?.children.length
   const [counts, setCounts] = useState(0)
@@ -96,9 +95,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
 
   // GENERAL
   if (carouselChildrenCounts) {
-    console.log(carouselChildrenCounts > temptItemDisplayed, 'passed cond');
-    console.log(temptItemDisplayed, 'temptItemDisplayed');
-
     showSliderBtn = carouselChildrenCounts > temptItemDisplayed
   }
 
